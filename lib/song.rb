@@ -42,8 +42,10 @@ class Song
     song
   end
   def self.create_from_filename(filename)
-    song = self.new
-    song_array = filename[/[^.]+/].split(" - ")
+    song = self.new #if I use self.create here will it save the instance to 
+    # @@all without associated song.name and song.artist_name? 
+    song_array = filename[/[^.]+/].split(" - ") #this won't work if there is a - in the song name
+    # but if i target the .mp3 it won't work with other file types
     song.name = song_array[1]
     song.artist_name = song_array[0]
     song.save
