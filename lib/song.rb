@@ -2,6 +2,8 @@ require 'pry'
 class Song
   attr_accessor :name, :artist_name
   @@all = []
+  @@artists = []
+  @@names = []
   def self.create
     song = self.new
     self.all << song
@@ -34,13 +36,17 @@ class Song
   end
   def self.new_from_filename(filename)
     song = self.new
-    mod_name = filename.split()
-    mod_name.name = mod_name
-    self.all << self.save
-    binding.pry
+    song_array = filename[/[^.]+/].split(" - ")
+    song.name = song_array[1]
+    song.artist_name = song_array[0]
+    song
   end
-  def self.create_from_filename
-
+  def self.create_from_filename(filename)
+    song = self.new
+    song_array = filename[/[^.]+/].split(" - ")
+    song.name = song_array[1]
+    song.artist_name = song_array[0]
+    song.save
   end
   def self.destroy_all
     self.all.clear
