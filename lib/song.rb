@@ -2,8 +2,6 @@ require 'pry'
 class Song
   attr_accessor :name, :artist_name
   @@all = []
-  # @@artists = []
-  # @@names = []
   def self.create
     song = self.new
     self.all << song
