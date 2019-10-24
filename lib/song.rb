@@ -2,8 +2,6 @@ require 'pry'
 class Song
   attr_accessor :name, :artist_name
   @@all = []
-  @@artists = []
-  @@names = []
   def self.create
     song = self.new
     self.all << song
@@ -42,8 +40,8 @@ class Song
     song
   end
   def self.create_from_filename(filename)
-    song = self.new #if I use self.create here will it save the instance to 
-    # @@all without associated song.name and song.artist_name? 
+    song = self.new #if I use self.create here will it save the instance to
+    # @@all without associated song.name and song.artist_name?
     song_array = filename[/[^.]+/].split(" - ") #this won't work if there is a - in the song name
     # but if i target the .mp3 it won't work with other file types
     song.name = song_array[1]
